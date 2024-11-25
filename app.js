@@ -100,6 +100,25 @@ sequelize.authenticate()
 
 const router = express.Router()
 
+//? https://sequelize.org/docs/v6/core-concepts/model-querying-basics/
+
+// LIST TODOS:
+router.get('/', async (req, res) => {
+
+    // const data = await Todo.findAll()
+    // const data = await Todo.findAndCountAll()
+    // const data = await Todo.findAll({
+    //     attributes: ['title', 'description', 'priority'], // Select Filelds
+    //     where: { priority: -1 } // Filters
+    // })
+
+    res.status(200).send({
+        error: false,
+        result: data
+    })
+
+})
+
 //? CRUD -> 
 
 // CREATE TODO:
@@ -123,6 +142,9 @@ router.post('/', async (req, res) => {
     
 })
 
+// READ TODO:
+// UPDATE TODO:
+// DELETE TODO:
 
 app.use(router)
 
