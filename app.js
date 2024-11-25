@@ -35,6 +35,49 @@ const { Sequelize, DataTypes } = require('sequelize')
 // const sequelize = new Sequelize('sqlite:' + process.env.SQLITE)
 const sequelize = new Sequelize('sqlite:' + (process.env.SQLITE || './db.sqlite3'))
 
+// Model:
+// Her model, veritabanında bir tabloya karşılık gelir.
+// sequelize.define('tableName', { tableDetails })
+
+// Model isimleri PascalCase:
+const Todo = sequelize.define('todos', {
+
+    // sequelize'da id tanımlamaya gerek yoktur. Otomatik tanımlanır.
+    // id: {
+    //     type: DataTypes.INTEGER,
+    //     allowNull: false, // default: true
+    //     unique: true, // default: false
+    //     comment: 'description',
+    //     primaryKey: true, // default: false
+    //     autoIncrement: true, // default: false
+    //     field: 'custom_name', 
+    //     defaultValue: 0 // default: null
+    // },
+
+    title: {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
+
+    description: {
+        type: DataTypes.TEXT,
+        allowNull: true,
+    },
+
+    priority: { // -1: Low, 0: Normal, 1: Yüksek
+        type: DataTypes.TINYINT,
+        allowNull: false,
+        defaultValue: 0
+    },
+
+    isDone: {
+        types: DataTypes.BOOLEAN,
+        allowNull: false,
+        defaultValue: false
+    }
+
+})
+
 
 /* ------------------------------------------------------- */
 const errorHandler = (err, req, res, next) => {
