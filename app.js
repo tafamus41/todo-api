@@ -82,12 +82,41 @@ const Todo = sequelize.define('todos', {
 
 })
 
-// Syncronization:
-// Model'i veritabanına uygula:
-sequelize.sync()
+//* Syncronization:
+//? Model'i veritabanına uygula:
+// sequelize.sync() // CREATE TABLE (ilk uygulama)
+// sequelize.sync({ force: true }) // DROP TABLE & CREATE TABLE (Dikkat! Data var ise silinir.)
+// sequelize.sync({ alter: true }) // TO BACKUP & DROP TABLE & CREATE TABLE & FROM BACKUP 
+//! sync() methodu 1 kere uygulanır ((modelde değişiklik var ise tekrar uygulanır.)
+
+// Connect to DB:
+sequelize.authenticate()
+    .then(() => console.log('* DB Connected * '))
+    .catch(() => console.log('* DB Not Connected * '))
+
+/* ------------------------------------------------------- */
+
+//ROUTERS:
+
+const router=express.Router()
+//?CRUD ->
+
+router.post("/",(req,res)=>{
+    
+})
+
+
+
 
 
 /* ------------------------------------------------------- */
+
+
+
+
+
+
+
 const errorHandler = (err, req, res, next) => {
     const errorStatusCode = res.errorStatusCode ?? 500
     console.log('errorHandler worked.')
