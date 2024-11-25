@@ -59,10 +59,10 @@ const Todo = sequelize.define('todos', {
         allowNull: false
     },
 
-    description: {
-        type: DataTypes.TEXT,
-        allowNull: true,
-    },
+    // description: {
+    //     type: DataTypes.TEXT,
+    // },
+    description: DataTypes.TEXT, // ShortHand 
 
     priority: { // -1: Low, 0: Normal, 1: Yüksek
         type: DataTypes.TINYINT,
@@ -71,12 +71,20 @@ const Todo = sequelize.define('todos', {
     },
 
     isDone: {
-        types: DataTypes.BOOLEAN,
+        type: DataTypes.BOOLEAN,
         allowNull: false,
         defaultValue: false
-    }
+    },
+
+    // createdAt: {},
+    // updatedAt: {},
+    // createdAt ve updatedAt tanımlamaya gerek yoktur. Sequelize otomatik yönetir.
 
 })
+
+// Syncronization:
+// Model'i veritabanına uygula:
+sequelize.sync()
 
 
 /* ------------------------------------------------------- */
