@@ -19,7 +19,7 @@ const Todo = sequelize.define("todos", {
     defaultValue: false,
   },
 });
-sequelize.sync();
+// sequelize.sync();
 
 sequelize.authenticate()
 .then(() => console.log('* DB Connected * '))
